@@ -34,7 +34,7 @@ services:
             - MW_SECRET_KEY
 
 #            - XDEBUG_CONFIG=remote_host=0.0.0.0 remote_enable=1 remote_autostart=Off remote_connect_back=On
-            - MW_SITE_SERVER=https://bugsigdb.wikiworks.com
+            - MW_SITE_SERVER=https://bugsigdb.org
             - MW_SITE_NAME=A Comprehensive Database of Microbial Signatures
             - MW_SITE_LANG=en
             - MW_ENABLE_UPLOADS=1
