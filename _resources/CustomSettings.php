@@ -112,7 +112,7 @@ $wgRestrictDisplayTitle = false;
 $wgNamespacesWithSubpages[NS_MAIN] = true;
 
 $wgRunJobsAsync = true;
-
+/* see MW_MAIN_CACHE_TYPE=CACHE_REDIS
 $wgObjectCaches['redis'] = [
 	'class' => 'RedisBagOStuff',
 	'servers' => ['redis:6379']
