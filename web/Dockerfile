@@ -102,6 +102,10 @@ ENV MW_MAINTENANCE_UPDATE=0 \
 	MW_ENABLE_UPLOADS=0 \
 	MW_MAIN_CACHE_TYPE=CACHE_NONE \
 	MW_DB_SERVER=db \
+	MW_ENABLE_JOB_RUNNER=true \
+	MW_JOB_RUNNER_PAUSE=2 \
+	MW_ENABLE_TRANSCODER=true \
+	MW_JOB_TRANSCODER_PAUSE=60 \
 	PHP_UPLOAD_MAX_FILESIZE=2M \
 	PHP_POST_MAX_SIZE=8M \
 	PHP_LOG_ERRORS=On \
@@ -110,6 +114,11 @@ ENV MW_MAINTENANCE_UPDATE=0 \
 COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
 COPY php.ini /etc/php.d/90-mediawiki.ini
 COPY mediawiki.conf /etc/httpd/conf.d/
+
+COPY mwjobrunner.sh /mwjobrunner.sh
+RUN chmod -v +x /mwjobrunner.sh
+COPY mwtranscoder.sh /mwtranscoder.sh
+RUN chmod -v +x /mwtranscoder.sh
 
 COPY run-apache.sh /run-apache.sh
 RUN chmod -v +x /run-apache.sh
