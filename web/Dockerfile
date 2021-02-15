@@ -16,7 +16,7 @@ RUN yum -y install php php-cli php-mysqlnd php-gd php-mbstring php-xml php-intl 
 RUN sed -i '/<Directory "\/var\/www\/html">/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
 
 ENV MW_VERSION=REL1_35 \
-	MW_CORE_VERSION=1.35.0 \
+	MW_CORE_VERSION=1.35.1 \
 	MW_HOME=/var/www/html/w \
 	MW_VOLUME=/mediawiki \
 	MW_ORIGIN_FILES=/mw_origin_files \
