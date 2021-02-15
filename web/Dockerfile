@@ -11,7 +11,7 @@ RUN set -x; \
 RUN yum-config-manager --enable remi-php74
 RUN yum -y update
 RUN yum -y install php php-cli php-mysqlnd php-gd php-mbstring php-xml php-intl php-opcache php-pecl-apcu php-redis \
-		git composer mysql wget unzip imagemagick python-pygments ssmtp
+		git composer mysql wget unzip imagemagick python-pygments ssmtp patch
 
 RUN sed -i '/<Directory "\/var\/www\/html">/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/httpd/conf/httpd.conf
 
@@ -97,6 +97,13 @@ RUN set -x; \
 	&& git clone https://github.com/WikiTeq/NCBITaxonomyLookup.git \
 	&& cd NCBITaxonomyLookup \
 	&& git checkout -b $MW_VERSION f23565dfe2fdbcaa5b265545058ddc6959c96f40
+
+# PATCHES
+# Patching UserGroupManager because of https://wikiteq.atlassian.net/browse/WLDR-92
+COPY patches/ugm.patch /tmp/ugm.patch
+RUN set -x; \
+	cd $MW_HOME \
+	&& git apply < /tmp/ugm.patch
 
 ENV MW_MAINTENANCE_UPDATE=0 \
 	MW_ENABLE_UPLOADS=0 \
