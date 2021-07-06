@@ -244,3 +244,20 @@ $wgMaxGeneratedPPNodeCount = 1000000*2;
 $wgExpensiveParserFunctionLimit = 99*2;
 
 $egLoopsCounterLimit = 1000;
+
+$wgFooterIcons['poweredby']['wikiworks'] = [
+	'src' => $wgScriptPath . '/wikiworks-logo.png',
+	'url' => 'https://wikiworks.com/',
+	'alt' => 'WikiWorks',
+	'width' => '110',
+	'height' => '31'
+];
+
+$wgFooterIcons['poweredby']['cuny'] = [
+	'src' => $wgScriptPath . '/cuny-logo.png',
+	'url' => 'https://www.cuny.edu/',
+	'alt' => 'The City University of New York',
+	'width' => '90',
+	'height' => '31'
+];
+

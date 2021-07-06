@@ -56,6 +56,8 @@ services:
             - ./_resources/.htaccess:/var/www/html/.htaccess
             - ./_resources/favicon.ico:/var/www/html/w/favicon.ico
             - ./_resources/logo.png:/var/www/html/w/logo.png
+            - ./_resources/wikiworks-logo.png:/var/www/html/w/wikiworks-logo.png
+            - ./_resources/cuny-logo.png:/var/www/html/w/cuny-logo.png
             - ./_resources/chameleon:/var/www/html/w/skins/chameleon/custom
 
     redis:
