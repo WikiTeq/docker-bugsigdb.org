@@ -243,7 +243,7 @@ $wgMaxTemplateDepth = 40*2;
 $wgMaxGeneratedPPNodeCount = 1000000*2;
 $wgExpensiveParserFunctionLimit = 99*2;
 
-$egLoopsCounterLimit = 1000;
+$egLoopsCounterLimit = 3000;
 
 $wgFooterIcons['poweredby']['wikiworks'] = [
 	'src' => $wgScriptPath . '/wikiworks-logo.png',
