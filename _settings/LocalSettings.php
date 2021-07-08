@@ -260,5 +260,3 @@ $wgFooterIcons['poweredby']['cuny'] = [
 	'width' => '90',
 	'height' => '31'
 ];
-
-wfLoadExtension( 'RandomInCategory' );
