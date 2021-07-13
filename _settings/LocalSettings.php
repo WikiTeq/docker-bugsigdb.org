@@ -261,5 +261,5 @@ $wgFooterIcons['poweredby']['cuny'] = [
 	'height' => '31'
 ];
 
-$wgGoogleAnalyticsOtherCode = "<!-- Global site tag (gtag.js) - Google Analytics --><script async src=\"https://www.googletagmanager.com/gtag/js?id=G-YKH03F3F5K\"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-YKH03F3F5K');</script>";
-$wgGroupPermissions['bot']['noanalytics'] = true;
+$wgGTagAnalyticsId = 'G-YKH03F3F5K';
+$wgGroupPermissions['bot']['gtag-exempt'] = true;
