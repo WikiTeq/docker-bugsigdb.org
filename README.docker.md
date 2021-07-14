@@ -107,3 +107,31 @@ variables matching user/password that was used during installation.
 
 Make the `import_logs_matomo.sh` be run on Cron @daily close to midnight to keep the Matomo
 fed with visits information.
+
+## Nginx configuration
+
+```apacheconf
+   # matomo
+   location /matomo/ {
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Uri /matomo;
+        proxy_read_timeout 300;
+        proxy_pass http://127.0.0.1:8182/;
+        proxy_set_header X-Forwarded-For $remote_addr;
+   }
+```
+
+Plus once containers are started modify the Matomo config as below (the settings are intended to
+be generated automatically, but it's better to verify):
+
+```php
+[General]
+trusted_hosts[] = "127.0.0.1:8182"
+assume_secure_protocol = 1
+force_ssl=0
+proxy_uri_header = 1
+```
