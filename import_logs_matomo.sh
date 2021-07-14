@@ -10,9 +10,8 @@ fi
 # Get stack information
 CONTAINER_MATOMO=$(docker-compose ps matomo | tail -n +2 | awk '{ print $1 }')
 CONTAINER_WEB=$(docker-compose ps web | tail -n +2 | awk '{ print $1 }')
-COMPOSE_NETWORK=$(docker inspect -f \
-  '{{range $k, $v := .NetworkSettings.Networks}}{{printf "%s\n" $k}}{{end}}' \
-  "$CONTAINER_WEB" | xargs
+COMPOSE_NETWORK=$(docker inspect \
+  --format='{{range $k, $v := .NetworkSettings.Networks}}{{printf "%s\n" $k}}{{end}}' $CONTAINER_WEB | xargs
 )
 
 # Run logs parser using Python 3, fetch logs from
