@@ -18,7 +18,7 @@ docker run \
   --rm \
   --network "$COMPOSE_NETWORK" \
   --volumes-from="$CONTAINER_MATOMO" \
-  --volumes-from="$CONTAINER_WEB:ro" \
+  -v "$(pwd)"/_logs/httpd:/var/log/httpd \
   --link "$CONTAINER_MATOMO" \
   python:3-alpine python /var/www/html/misc/log-analytics/import_logs.py \
   --url="$MATOMO_URL" \
