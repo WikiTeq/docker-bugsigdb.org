@@ -246,19 +246,35 @@ $wgExpensiveParserFunctionLimit = 99*2;
 $egLoopsCounterLimit = 3000;
 
 $wgFooterIcons['poweredby']['wikiworks'] = [
-	'src' => $wgScriptPath . '/wikiworks-logo.png',
+	'src' => $wgScriptPath . '/ww.png',
 	'url' => 'https://wikiworks.com/',
 	'alt' => 'WikiWorks',
-	'width' => '110',
-	'height' => '31'
+	'width' => 'auto',
+	'height' => '48'
 ];
 
 $wgFooterIcons['poweredby']['cuny'] = [
-	'src' => $wgScriptPath . '/cuny-logo.png',
+	'src' => $wgScriptPath . '/cuny.png',
 	'url' => 'https://www.cuny.edu/',
 	'alt' => 'The City University of New York',
-	'width' => '90',
-	'height' => '31'
+	'width' => 'auto',
+	'height' => '48'
+];
+
+$wgFooterIcons['poweredby']['mediawiki'] = [
+	'src' => $wgScriptPath . '/mw.png',
+	'url' => 'https://www.mediawiki.org/',
+	'alt' => 'Powered by MediaWiki',
+	'width' => 'auto',
+	'height' => '48'
+];
+
+$wgFooterIcons['poweredby']['semanticmediawiki'] = [
+	'src' => $wgScriptPath . '/smw.png',
+	'url' => 'https://www.semantic-mediawiki.org/',
+	'alt' => 'Powered by Semantic MediaWiki',
+	'width' => 'auto',
+	'height' => '48'
 ];
 
 $wgGTagAnalyticsId = 'G-YKH03F3F5K';
