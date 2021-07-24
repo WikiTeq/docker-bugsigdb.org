@@ -141,6 +141,7 @@ $egChameleonExternalStyleModules = [
 	"$IP/skins/chameleon/custom/Cosmo/_variables.scss" => 'afterFunctions',
 	"$IP/skins/chameleon/custom/_variables.scss" => 'afterVariables',
 	"$IP/skins/chameleon/custom/Cosmo/_bootswatch.scss" => 'afterMain',
+	"$IP/skins/chameleon/custom/custom.scss" => 'afterMain',
 ];
 $egChameleonLayoutFile = "$IP/skins/chameleon/custom/layouts/navhead.xml";
 
@@ -280,3 +281,9 @@ $wgFooterIcons['poweredby']['semanticmediawiki'] = [
 $wgGTagAnalyticsId = 'G-YKH03F3F5K';
 $wgGroupPermissions['bot']['gtag-exempt'] = true;
 $wgGTagAnonymizeIP = true;
+
+$wgHooks['SkinAddFooterLinks'][] = function ( $skin, string $key, array &$footerlinks  ) {
+	if ( $key === 'info' ) {
+		$footerlinks['funded'] = ' Funded by NIH 5R01CA230551 to the City University of New York';
+	}
+};
