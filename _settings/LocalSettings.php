@@ -284,6 +284,6 @@ $wgGTagAnonymizeIP = true;
 
 $wgHooks['SkinAddFooterLinks'][] = function ( $skin, string $key, array &$footerlinks  ) {
 	if ( $key === 'info' ) {
-		$footerlinks['funded'] = ' Funded by NIH 5R01CA230551 to the City University of New York';
+		$footerlinks['funded'] = 'Funded by NIH 5R01CA230551 to the City University of New York';
 	}
 };
