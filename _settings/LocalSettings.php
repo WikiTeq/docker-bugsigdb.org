@@ -246,18 +246,21 @@ $wgExpensiveParserFunctionLimit = 99*2;
 
 $egLoopsCounterLimit = 3000;
 
+$wgFooterIcons = [];
+
+$wgFooterIcons['poweredby']['cuny'] = [
+	'src' => $wgScriptPath . '/cuny.png',
+	'url' => 'https://sph.cuny.edu/about/people/faculty/levi-waldron/',
+	'alt' => 'The City University of New York',
+	'width' => 'auto',
+	'height' => '48',
+	'style' => 'padding-right: 15px; border-right: 1px solid lightgray;'
+];
+
 $wgFooterIcons['poweredby']['wikiworks'] = [
 	'src' => $wgScriptPath . '/ww.png',
 	'url' => 'https://wikiworks.com/',
 	'alt' => 'WikiWorks',
-	'width' => 'auto',
-	'height' => '48'
-];
-
-$wgFooterIcons['poweredby']['cuny'] = [
-	'src' => $wgScriptPath . '/cuny.png',
-	'url' => 'https://www.cuny.edu/',
-	'alt' => 'The City University of New York',
 	'width' => 'auto',
 	'height' => '48'
 ];
