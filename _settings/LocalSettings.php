@@ -130,6 +130,7 @@ $wgRunJobsAsync = true;
 
 $smwgCacheType = 'redis';
 $smwgQueryResultCacheType = 'redis';
+$smwgValueLookupCacheType = 'redis';
 
 ############# Skin settings #############
 # chameleon
