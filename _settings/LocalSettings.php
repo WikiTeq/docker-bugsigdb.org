@@ -128,10 +128,6 @@ $wgRunJobsAsync = true;
 	}
 };*/
 
-$smwgCacheType = 'redis';
-$smwgQueryResultCacheType = 'redis';
-$smwgValueLookupCacheType = 'redis';
-
 ############# Skin settings #############
 # chameleon
 $egChameleonExternalStyleModules = [
@@ -149,6 +145,10 @@ $smwgEntityCollation = $wgCategoryCollation;
 $smwgEnabledQueryDependencyLinksStore = false;
 $wgNamespacesWithSubpages[SMW_NS_PROPERTY] = true;
 $smwgQMaxInlineLimit = 220000;
+
+$smwgCacheType = 'redis';
+$smwgQueryResultCacheType = 'redis';
+$smwgValueLookupCacheType = 'redis';
 
 //wfLoadExtension( 'DataTransfer' );
 
