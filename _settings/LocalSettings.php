@@ -115,14 +115,8 @@ $wgRestrictDisplayTitle = false;
 $wgNamespacesWithSubpages[NS_MAIN] = true;
 
 $wgRunJobsAsync = true;
-/* see MW_MAIN_CACHE_TYPE=CACHE_REDIS
-$wgObjectCaches['redis'] = [
-	'class' => 'RedisBagOStuff',
-	'servers' => ['redis:6379']
-];
-$wgMainCacheType = 'redis';
-$wgSessionCacheType = CACHE_DB;
 
+/*
 #$wgExpensiveParserFunctionLimit = 9999;
 
 # Core hook - used to be sure that Studies get updated when Experiments or Signatures added
@@ -134,6 +128,7 @@ $wgSessionCacheType = CACHE_DB;
 	}
 };*/
 
+$smwgQueryResultCacheType = 'redis';
 
 ############# Skin settings #############
 # chameleon
