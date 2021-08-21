@@ -128,6 +128,7 @@ $wgRunJobsAsync = true;
 	}
 };*/
 
+$smwgCacheType = 'redis';
 $smwgQueryResultCacheType = 'redis';
 
 ############# Skin settings #############
