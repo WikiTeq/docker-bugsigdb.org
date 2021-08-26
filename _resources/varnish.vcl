@@ -23,6 +23,7 @@ sub vcl_recv {
         # is slow to respond.
         # set req.grace = 120s;
 #        set req.http.X-Forwarded-For = client.ip;
+		set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + client.ip;
         set req.backend_hint= default;
 
         # This uses the ACL action called "purge". Basically if a request to
