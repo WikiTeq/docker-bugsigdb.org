@@ -167,10 +167,12 @@ sub vcl_backend_response {
 }
 
 sub vcl_hash {
+    hash_data(req.url);
 	# Cache the mobile version of pages separately.
 	if ( req.http.X-Device ) {
 		hash_data(req.http.X-Device);
 	}
+    return (lookup);
 }
 
 sub mobile_detect {

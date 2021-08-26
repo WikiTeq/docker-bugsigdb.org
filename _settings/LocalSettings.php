@@ -290,3 +290,5 @@ $wgHooks['SkinAddFooterLinks'][] = function ( $skin, string $key, array &$footer
 		$footerlinks['funded'] = 'Funded by NIH 5R01CA230551 to the City University of New York';
 	}
 };
+
+$wgInternalServer = "http://web:80";
