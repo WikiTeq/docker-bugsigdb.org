@@ -32,6 +32,7 @@ sub vcl_recv {
             if (!client.ip ~ purge || ("" + client.ip) ~ "\.1$") { // don't allow to purge from docker gateways
                 return (synth(405, "Not allowed."));
             } else {
+                ban("req.url ~ " + req.url);
                 return (purge);
             }
         }
@@ -112,7 +113,7 @@ sub vcl_pipe {
 # Called if the cache has a copy of the page.
 sub vcl_hit {
         if (req.method == "PURGE") {
-            ban(req.url);
+            ban("req.url ~ " + req.url);
             return (synth(200, "Purged"));
         }
 
@@ -162,6 +163,8 @@ sub vcl_backend_response {
           set beresp.uncacheable = true;
           return (deliver);
         }
+
+
 
         return (deliver);
 }
