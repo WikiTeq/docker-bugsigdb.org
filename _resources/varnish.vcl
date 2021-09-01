@@ -26,6 +26,11 @@ sub vcl_recv {
 		set req.http.X-Forwarded-For = req.http.X-Forwarded-For + ", " + client.ip;
         set req.backend_hint= default;
 
+		# Bypass cache for API calls
+        if (req.url ~ "/api.php") {
+            return(pass);
+        }
+
         # This uses the ACL action called "purge". Basically if a request to
         # PURGE the cache comes from anywhere other than localhost, ignore it.
         if (req.method == "PURGE") {
