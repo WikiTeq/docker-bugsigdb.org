@@ -27,7 +27,7 @@ sub vcl_recv {
         set req.backend_hint= default;
 
 		# Bypass cache for API calls
-        if (req.url ~ "/api.php") {
+        if (req.url ~ "/w/api.php") {
             return(pass);
         }
 
