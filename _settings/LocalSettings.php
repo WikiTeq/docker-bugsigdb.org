@@ -292,3 +292,10 @@ $wgHooks['SkinAddFooterLinks'][] = function ( $skin, string $key, array &$footer
 };
 
 $wgInternalServer = "http://web:80";
+
+// Disables cache for Special:Random
+$wgHooks['SpecialPageBeforeExecute'][] = function( SpecialPage $special, $subPage ) {
+	if ( $special->getName() === 'Randompage' ) {
+		$special->getOutput()->enableClientCache( false );
+	}
+};
