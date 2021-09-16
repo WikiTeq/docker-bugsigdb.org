@@ -15,7 +15,7 @@ services:
             - ./_data/mysql:/var/lib/mysql
 
     web:
-        image: ghcr.io/wikiteq/mediawiki:1.35.3-20210901-312e686
+        image: ghcr.io/wikiteq/mediawiki:1.35.3-20210916-84
         restart: unless-stopped
         links:
             - db
