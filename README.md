@@ -135,3 +135,12 @@ assume_secure_protocol = 1
 force_ssl=0
 proxy_uri_header = 1
 ```
+
+## Purging homepage SMW caches
+
+Add the following line to a server cron:
+
+```bash
+0 * * * * cd /path/to/docker/stack/ && docker-compose exec web bash -c 'echo "Main_Page" | php maintenance/purgePage.php'
+```
+
