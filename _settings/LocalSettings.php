@@ -301,8 +301,8 @@ $wgHooks['SpecialPageBeforeExecute'][] = function( SpecialPage $special, $subPag
 };
 
 $wgResourceModules['ext.datatables'] = [
-	'scripts' => [ 'extensions/DataTables/datatables.min.js' ],
-	'styles' => [ 'extensions/DataTables/datatables.min.css' ]
+	'scripts' => [ 'extensions/DataTables/datatables/datatables.min.js' ],
+	'styles' => [ 'extensions/DataTables/datatables/datatables.min.css' ]
 ];
 
 $wgHooks['BeforePageDisplay'][] = function( $out ) {
