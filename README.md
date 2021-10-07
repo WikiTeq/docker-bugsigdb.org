@@ -138,9 +138,10 @@ proxy_uri_header = 1
 
 ## Purging homepage SMW caches
 
-Add the following line to a server cron:
+The image configured to automatically purge homepage once per hour, you can
+configure this using the following environment variables:
 
-```bash
-0 * * * * cd /path/to/docker/stack/ && docker-compose exec web bash -c 'echo "Main_Page" | php maintenance/purgePage.php'
 ```
-
+MW_CACHE_PURGE_PAUSE=3600
+MW_CACHE_PURGE_PAGE=Main_Page
+```
