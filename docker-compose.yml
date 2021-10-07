@@ -20,7 +20,7 @@ services:
         links:
             - db
             - redis
-#            - elasticsearch
+            - elasticsearch
         command: bash /entrypoint.sh
         environment:
             # DEFINE THIS VARIABLES IN .env FILE
