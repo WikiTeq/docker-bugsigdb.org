@@ -75,34 +75,34 @@ services:
             - ./_data/redis:/data
 #            - ./_resources/redis.conf:/usr/local/etc/redis/redis.conf
 
-#    elasticsearch:
-#        image: docker.elastic.co/elasticsearch/elasticsearch:6.8.13
-#        restart: unless-stopped
-#        environment:
-#            - discovery.type=single-node
-#            - bootstrap.memory_lock=true
-#            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-#        ulimits:
-#            memlock:
-#                soft: -1
-#                hard: -1
-#        volumes:
-#            - ./_data/elasticsearch:/usr/share/elasticsearch/data
+    elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:6.8.13
+        restart: unless-stopped
+        environment:
+            - discovery.type=single-node
+            - bootstrap.memory_lock=true
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+        volumes:
+            - ./_data/elasticsearch:/usr/share/elasticsearch/data
 
-#    matomo:
-#        image: matomo
-#        restart: unless-stopped
-#        links:
-#            - db
-#        ports:
-#            - "8182:80"
-#        environment:
-#            - MATOMO_DATABASE_HOST=db
-#            - MATOMO_DATABASE_DBNAME=matomo
-#            - MATOMO_DATABASE_USERNAME=root
-#            - MATOMO_DATABASE_PASSWORD=$MW_DB_INSTALLDB_PASS
-#        volumes:
-#            - ./_data/matomo:/var/www/html
+    matomo:
+        image: matomo
+        restart: unless-stopped
+        links:
+            - db
+        ports:
+            - "8182:80"
+        environment:
+            - MATOMO_DATABASE_HOST=db
+            - MATOMO_DATABASE_DBNAME=matomo
+            - MATOMO_DATABASE_USERNAME=root
+            - MATOMO_DATABASE_PASSWORD=$MW_DB_INSTALLDB_PASS
+        volumes:
+            - ./_data/matomo:/var/www/html
 
     varnish:
         image: varnish:stable
