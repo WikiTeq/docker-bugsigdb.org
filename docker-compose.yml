@@ -17,10 +17,12 @@ services:
     web:
         image: ghcr.io/wikiteq/mediawiki:1.35.5-20211218-67fdf18
         restart: unless-stopped
+        ports:
+            - "${PORT:-8081}:80"
         links:
             - db
             - redis
-            - elasticsearch
+        #            - elasticsearch
         command: bash /entrypoint.sh
         environment:
             # DEFINE THIS VARIABLES IN .env FILE
@@ -36,7 +38,7 @@ services:
             - MW_DB_PASS=$MW_DB_INSTALLDB_PASS
             - MW_SECRET_KEY
 
-#            - XDEBUG_CONFIG=remote_host=0.0.0.0 remote_enable=1 remote_autostart=Off remote_connect_back=On
+            #            - XDEBUG_CONFIG=remote_host=0.0.0.0 remote_enable=1 remote_autostart=Off remote_connect_back=On
             - MW_SITE_SERVER=${MW_SITE_SERVER:-https://bugsigdb.org}
             - MW_SITE_NAME=BugSigDB
             - MW_SITE_LANG=en
@@ -47,11 +49,11 @@ services:
             - MW_LOAD_SKINS=Vector,chameleon
             - MW_DEFAULT_SKIN=chameleon
             - MW_LOAD_EXTENSIONS=GTag,CodeEditor,Nuke,ParserFunctions,ReplaceText,WikiEditor,Interwiki,CodeEditor,Scribunto,SyntaxHighlight_GeSHi,DataTransfer,Variables,PubmedParser,CodeMirror,Loops,MyVariables,Arrays,DisplayTitle,NCBITaxonomyLookup,SemanticExtraSpecialProperties,SemanticResultFormats
-            - MW_SEARCH_TYPE=CirrusSearch
-            - MW_PROXY_SERVERS=varnish:80
-            - MW_CACHE_PURGE_PAUSE=${MW_CACHE_PURGE_PAUSE:-3600}
-            - MW_CACHE_PURGE_PAGE=${MW_CACHE_PURGE_PAGE:-Main_Page}
-            - MW_ENABLE_SITEMAP_GENERATOR=true
+        #            - MW_SEARCH_TYPE=CirrusSearch
+        #            - MW_PROXY_SERVERS=varnish:80
+        #            - MW_CACHE_PURGE_PAUSE=${MW_CACHE_PURGE_PAUSE:-3600}
+        #            - MW_CACHE_PURGE_PAGE=${MW_CACHE_PURGE_PAGE:-Main_Page}
+        #            - MW_ENABLE_SITEMAP_GENERATOR=true
         volumes:
             - ./_data/mediawiki:/mediawiki
             - ./_logs/httpd:/var/log/httpd
@@ -67,6 +69,7 @@ services:
             - ./_resources/extensions/SemanticDependencyUpdater:/var/www/html/w/extensions/SemanticDependencyUpdater
             - ./_resources/extensions/DataTables:/var/www/html/w/extensions/DataTables
             - ./_resources/googlef2273af339547660.html:/var/www/html/googlef2273af339547660.html
+            - ./_resources/symlink:/var/www/html/test
             - ./entrypoint.sh:/entrypoint.sh
             - ./cache_purge.sh:/cache_purge.sh
 
@@ -75,47 +78,47 @@ services:
         restart: unless-stopped
         volumes:
             - ./_data/redis:/data
-#            - ./_resources/redis.conf:/usr/local/etc/redis/redis.conf
+    #            - ./_resources/redis.conf:/usr/local/etc/redis/redis.conf
 
-    elasticsearch:
-        image: docker.elastic.co/elasticsearch/elasticsearch:6.8.13
-        restart: unless-stopped
-        environment:
-            - discovery.type=single-node
-            - bootstrap.memory_lock=true
-            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-        ulimits:
-            memlock:
-                soft: -1
-                hard: -1
-        volumes:
-            - ./_data/elasticsearch:/usr/share/elasticsearch/data
+    # elasticsearch:
+    #     image: docker.elastic.co/elasticsearch/elasticsearch:6.8.13
+    #     restart: unless-stopped
+    #     environment:
+    #         - discovery.type=single-node
+    #         - bootstrap.memory_lock=true
+    #         - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    #     ulimits:
+    #         memlock:
+    #             soft: -1
+    #             hard: -1
+    #     volumes:
+    #         - ./_data/elasticsearch:/usr/share/elasticsearch/data
 
-    matomo:
-        image: matomo
-        restart: unless-stopped
-        links:
-            - db
-        ports:
-            - "8182:80"
-        environment:
-            - MATOMO_DATABASE_HOST=db
-            - MATOMO_DATABASE_DBNAME=matomo
-            - MATOMO_DATABASE_USERNAME=root
-            - MATOMO_DATABASE_PASSWORD=$MW_DB_INSTALLDB_PASS
-        volumes:
-            - ./_data/matomo:/var/www/html
+#    matomo:
+#        image: matomo
+#        restart: unless-stopped
+#        links:
+#            - db
+#        ports:
+#            - "8182:80"
+#        environment:
+#            - MATOMO_DATABASE_HOST=db
+#            - MATOMO_DATABASE_DBNAME=matomo
+#            - MATOMO_DATABASE_USERNAME=root
+#            - MATOMO_DATABASE_PASSWORD=$MW_DB_INSTALLDB_PASS
+#        volumes:
+#            - ./_data/matomo:/var/www/html
 
-    varnish:
-        image: varnish:stable
-        restart: unless-stopped
-        ports:
-            - "${PORT:-8081}:80"
-        links:
-            - web
-        tmpfs:
-            - /var/lib/varnish:exec
-        environment:
-            - VARNISH_SIZE=${VARNISH_SIZE:-2G}
-        volumes:
-            - ./_resources/varnish.vcl:/etc/varnish/default.vcl
+#    varnish:
+#        image: varnish:stable
+#        restart: unless-stopped
+#        ports:
+#            - "${PORT:-8081}:80"
+#        links:
+#            - web
+#        tmpfs:
+#            - /var/lib/varnish:exec
+#        environment:
+#            - VARNISH_SIZE=${VARNISH_SIZE:-2G}
+#        volumes:
+#            - ./_resources/varnish.vcl:/etc/varnish/default.vcl

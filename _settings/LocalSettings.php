@@ -17,15 +17,16 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 ## For more information on customizing the URLs
 ## (like /w/index.php/Page_title to /wiki/Page_title) please see:
 ## https://www.mediawiki.org/wiki/Manual:Short_URL
-//$wgScriptPath = "/w";
+
+#$wgServer = "https://bugsigdb.org/";
+
+$wgScriptPath = "/test/w";
 //$wgScriptExtension = ".php";
-$wgArticlePath = "/$1";
+$wgArticlePath = "/test/$1";
 
 //## The protocol and server name to use in fully-qualified URLs
-//$wgServer = "https://bugsigdb.org";
-
 ## The URL path to static resources (images, scripts, etc.)
-//$wgResourceBasePath = $wgScriptPath;
+$wgResourceBasePath = $wgScriptPath;
 
 ## The URL path to the logo.  Make sure you change this from the default,
 ## or else you'll overwrite your logo when you upgrade!
@@ -316,3 +317,5 @@ $wgExternalLinkTarget = '_blank';
 $wgPageFormsMaxLocalAutocompleteValues = 20;
 
 wfLoadExtension( 'WikiSEO' );
+$wgSiteNotice = "This is a test wiki!";
+
