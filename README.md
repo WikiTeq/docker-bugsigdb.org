@@ -150,7 +150,7 @@ MW_CACHE_PURGE_PAGE=Main_Page
 
 The repo contains a Python script that is capable to walk the wiki Glossary terms
 pages and update outdated EFO links by replacing them with actual ones. Follow the
-steps below to setup it:
+steps below to set it up:
 
 * Install `python` v.3 and `pip`
 * Run `pip install -r updateEFO.requirements.txt`
