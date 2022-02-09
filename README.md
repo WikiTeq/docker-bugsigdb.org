@@ -68,7 +68,7 @@ The [LocalSettings.php](https://www.mediawiki.org/wiki/Manual:LocalSettings.php)
 - LocalSettings.php will be created automatically upon container startup, contains settings specific to the MediaWiki installed instance such as database connection, [$wgSecretKey](https://www.mediawiki.org/wiki/Manual:$wgSecretKey) and etc. **Should not be changed**
 - DockerSettings.php contains settings specific to the released containers such as database server name, path to programs, installed extensions, etc. **Should be changed if you make changes to the containers only**
 - CustomSettings.php - contains user-defined settings such as user rights, extensions settings and etc. **For any required customizations, make changes there**.
-  `CustomSettings.php` placed in folder `_resources` And will be copied to the container during build
+`CustomSettings.php` placed in folder `_resources` And will be copied to the container during build
 
 ## Data (images, database)
 
